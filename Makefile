@@ -41,8 +41,15 @@ launch: ## Launch the addon via JSON-RPC
 	  || echo "  ❌ Failed — is Kodi running? (make up)"
 
 zip: ## Package addon as an installable zip
-	cd .. && zip -r $(ADDON_ID).zip $(ADDON_ID)/ \
-	  -x "*.pyc" "*__pycache__*" "*.git*" "*docker-compose*" "*Makefile" "*kodi_data*"
+	find . -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null || true
+	cd .. && rm -f $(ADDON_ID).zip && zip -r $(ADDON_ID).zip $(ADDON_ID)/ \
+	  -x "$(ADDON_ID)/.*" \
+	  -x "$(ADDON_ID)/docker-compose*" \
+	  -x "$(ADDON_ID)/Makefile" \
+	  -x "$(ADDON_ID)/kodi_data/*" \
+	  -x "$(ADDON_ID)/CLAUDE.md" \
+	  -x "$(ADDON_ID)/__init__.py" \
+	  -x "$(ADDON_ID)/resources/"
 	@echo "  📦 Created ../$(ADDON_ID).zip"
 
 clean: ## Remove all Docker data (full reset)
