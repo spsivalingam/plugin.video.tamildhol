@@ -1,0 +1,20 @@
+services:
+  kodi:
+    image: matthuisman/kodi-headless:Omega
+    container_name: kodi-tamildhol
+    ports:
+      - "8080:8080"   # Chorus2 Web UI + JSON-RPC → http://localhost:8080
+      - "9090:9090"   # JSON-RPC WebSocket
+    volumes:
+      # Mount addon source code (live editing)
+      - ./:/config/.kodi/addons/plugin.video.tamildhol
+      # Persist Kodi userdata across restarts
+      - kodi_data:/config/.kodi/userdata
+    environment:
+      - PUID=1000
+      - PGID=1000
+    restart: unless-stopped
+
+volumes:
+  kodi_data:
+

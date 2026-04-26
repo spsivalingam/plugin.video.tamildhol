@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.tamildhol" name="TamilDhol" version="1.1.0" provider-name="opencode">
+    <requires>
+        <import addon="xbmc.python" version="3.0.0"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <summary lang="en">Watch Latest Tamil Serials and Shows from TamilDhol</summary>
+        <description lang="en">This addon allows you to scrape and watch Tamil serials and shows from tamildhol.se</description>
+        <disclaimer lang="en">This addon scrapes content from third-party websites. Users should be aware of copyright laws in their jurisdiction.</disclaimer>
+        <license>MIT</license>
+        <source>https://github.com/yourusername/plugin.video.tamildhol</source>
+        <assets>
+            <icon>resources/icon.png</icon>
+            <fanart>resources/fanart.jpg</fanart>
+            <thumbnail>resources/icon.png</thumbnail>
+        </assets>
+    </extension>
+</addon>
